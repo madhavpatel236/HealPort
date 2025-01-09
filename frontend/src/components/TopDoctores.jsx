@@ -19,6 +19,7 @@ function TopDoctores() {
         {/* LEARNINGS: grid-col-auto: see the teilwind.config.js file for the grid-cols-auto */}
         {doctors.slice(0, 10).map((item, index) => (
           <div
+          key={index}
           onClick={() => navigate(`/appointment/${item._id}`)}
             className="border  border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 "
           >
