@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     <div className="flex justify-between items-center text-sm py-4 mb-5 border-b border-b-gray-400">
-      <img className="w-12 h-12  rounded-full " src={logo} alt="Logo" />
+      <p className="rounded-full text-2xl lg:text-4xl font-bold text-primary " > HealPortal </p>
       <ul className=" hidden md:flex items-center gap-5 font-medium">
         <NavLink to='/'>
           <li className="py-1">HOME</li>

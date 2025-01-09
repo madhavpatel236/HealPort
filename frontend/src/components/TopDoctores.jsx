@@ -1,9 +1,13 @@
-import React from "react";
+// this is the component for the doctor list in the home page (approx 10 doctors).
+
+import React, { useContext } from "react";
 import { doctors } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
 function TopDoctores() {
   const navigate = useNavigate();
+  const {doctors} = useContext(AppContext);
 
   return (
     <div className=" my-10 text-gray-900 md:mx-10 flex flex-col items-center gap-4">
@@ -31,7 +35,7 @@ function TopDoctores() {
         ))}
       </div>
       <button
-        onClick={() => navigate("/doctors")}
+        onClick={() => {navigate("/doctors"); scrollTo(0,0) }}
         className="bg-blue-100 text-gray-600 px-12 py-3 rounded-full mt-10"
       >
         more

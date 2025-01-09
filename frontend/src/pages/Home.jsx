@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import SpecialityManu from '../components/SpecialityManu'
 import TopDoctores from '../components/TopDoctores'
+import Banner from '../components/Banner'
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       <Header />
       <SpecialityManu />
       <TopDoctores />
+      <Banner />
     </div>
   )
 }
