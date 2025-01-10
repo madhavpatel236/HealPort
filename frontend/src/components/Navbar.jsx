@@ -25,7 +25,7 @@ function Navbar() {
           <li className="py-1">ABOUT</li>
           <hr className="hidden border-none outline-none h-0.5 bg-primary w-3/5 m-auto  " />
         </NavLink>
-        <NavLink to='/contect' >
+        <NavLink to='/contact' >
           <li className="py-1">CONTECT</li>
           <hr className="hidden border-none outline-none h-0.5 bg-primary w-3/5 m-auto  " />
         </NavLink>

@@ -7,7 +7,7 @@ export default {
         primary: "#5f6FFF",
       },
       gridTemplateColumns: {
-        'auto': "repeat(auto-fit, minmax(200px, 250px))",
+        'auto': "repeat(auto-fit, minmax(200px, 1fr))",
         // repeat(): A CSS function that creates a repeating pattern of columns
         // auto-fit: Automatically fits as many columns as possible into the available space
         // minmax(200px, 1fr): Sets the size boundaries for each column
