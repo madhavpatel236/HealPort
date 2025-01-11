@@ -1,3 +1,4 @@
+// In this page we will show the profile of the user and user also edit their profile
 import React, { useState } from "react";
 import profile_pic from "../assets/profile_pic.png";
 function MyProfile() {
@@ -6,7 +7,10 @@ function MyProfile() {
     email: "madhav@gmail.com",
     image: profile_pic,
     phone: 9722919177,
-    address: "Jamjodhpur,Tirupati socity",
+    address: {
+      line1: "Jamjodhpur",
+      line2: "Tirupati socity",
+    },
     gender: "male",
     dob: "2023-04-01",
   });
@@ -52,16 +56,26 @@ function MyProfile() {
           )}
           <p className="font-medium"> Address: </p>
           {isEditable ? (
-            <input
-              className="bg-gray-100"
-              type="text"
-              value={userData.address}
-              onChange={(e) =>
-                setUserData((prev) => ({ ...prev, address: e.target.value }))
-              }
-            />
+            <p>
+              <input
+                className="bg-gray-100"
+                type="text"
+                value={userData.address.line1}
+                onChange={(e) =>
+                  setUserData((prev) => ({ ...prev.address, line1: e.target.value }))
+                }
+              />
+              <input
+                className="bg-gray-100"
+                type="text"
+                value={userData.address.line2}
+                onChange={(e) =>
+                  setUserData((prev) => ({ ...prev.address, line2: e.target.value }))
+                }
+              />
+            </p>
           ) : (
-            <p className="text-gray-500">{userData.address}</p>
+            <p className="text-gray-500">{userData.address.line1} <br /> {userData.address.line2} </p>
           )}
         </div>
       </div>
