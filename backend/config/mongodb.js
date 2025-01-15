@@ -7,5 +7,4 @@ const connectDB = async () =>{
         'mongodb+srv://madhavpatel236:4KJ3agcjTnMTLReZ@cluster0.pegi5.mongodb.net/'
     );
 }
-
 module.exports = connectDB
