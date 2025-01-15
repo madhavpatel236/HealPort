@@ -36,7 +36,7 @@ const doctorSchema = new mongoose.Schema({
   },
   available: {
     type: Boolean,
-    required: true,
+    default: true,
   },
   fees:{
     type: Number,
@@ -51,7 +51,7 @@ const doctorSchema = new mongoose.Schema({
     default: Date.now,
   },
   slots_booked:{
-    type: object,
+    type: Object,
     default: {},
   }
   },
@@ -59,6 +59,6 @@ const doctorSchema = new mongoose.Schema({
 ); // here {minimize:false} was enable or use the slots_booked field to be empty object if it's not available or true then we can not able to use empty object in this schema
 
 // Checks if a model named "doctor" already exists in mongoose.models Prevents re-compilation of models if they're already defined Helps avoid the "Cannot overwrite model once compiled" error
-const doctorModel = mongoose.models.doctor || mongoose.model("doctor", doctorSchema);
+const doctorModels = mongoose.models.doctor || mongoose.model("doctor", doctorSchema);
 
-module.exports = doctorModel;
+module.exports = doctorModels;
