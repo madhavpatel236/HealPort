@@ -1,16 +1,18 @@
+
 import { createContext, useState } from "react";
 
 export const adminContext = createContext({});
- export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 console.log("Backend URL:", backendUrl); // Verify the URL is loaded
 
-const AdminContextProvider = (props) => {
-  const [atoken, setAtoken] = useState("");
+const adminContextProvider = (props) => {
+  const [atoken, setAtoken] = useState();
+
 
   const value = {
     atoken,
-    setAtoken,
+    // TODO: setAtoken, liked with the Login.jsx
     backendUrl,
   };
 
@@ -21,4 +23,4 @@ const AdminContextProvider = (props) => {
   );
 };
 
-export default AdminContextProvider;
+export default adminContextProvider;

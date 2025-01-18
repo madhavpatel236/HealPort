@@ -1,25 +1,27 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { adminContext, backendUrl } from "../context/AdminContext";
-
+import { ToastContainer, toast } from "react-toastify";
 function Login() {
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState("admin@healportal.com");
   const [password, setPassword] = useState("Admin@236");
-  const { setAtoken } = useContext(adminContext);
+  // TODO: const {setToken}  = useContext(adminContext); // Linked with the AdminContext.jsx
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      if (state === 'Admin') {
+      if (state === "Admin") {
         const response = await axios.post(`${backendUrl}/api/admin/login`, {
           email,
           password,
-        });3
+        });
         if (response.data.success) {
           console.log(response.data.token);
           localStorage.setItem("token", response.data.token);
-          setAtoken(response.data.token);
+          //TODO: setToken(response.data.token); Linked with the AdminContext.jsx
+        } else {
+          toast.error(response.data.message);
         }
       }
     } catch (error) {
