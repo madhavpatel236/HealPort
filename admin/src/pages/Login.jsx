@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { adminContext, backendUrl } from "../context/AdminContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch,useSelector } from "react-redux";
+import { addToken } from "../store/Slices/adminSlice";
+
 function Login() {
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState("admin@healportal.com");
   const [password, setPassword] = useState("Admin@236");
-  // TODO: const {setToken}  = useContext(adminContext); // Linked with the AdminContext.jsx
+
+  const dispatch = useDispatch();
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -19,7 +23,7 @@ function Login() {
         if (response.data.success) {
           console.log(response.data.token);
           localStorage.setItem("token", response.data.token);
-          //TODO: setToken(response.data.token); Linked with the AdminContext.jsx
+          dispatch(addToken(response.data.token));
         } else {
           toast.error(response.data.message);
         }
