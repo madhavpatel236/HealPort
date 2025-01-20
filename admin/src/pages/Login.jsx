@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { adminContext, backendUrl } from "../context/AdminContext";
 import { ToastContainer, toast } from "react-toastify";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToken } from "../store/Slices/adminSlice";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Login() {
   const [state, setState] = useState("Admin");
@@ -11,17 +12,24 @@ function Login() {
   const [password, setPassword] = useState("Admin@236");
 
   const dispatch = useDispatch();
+  const localToken = localStorage.getItem("token");
+
+  console.log(localToken);
+  if (localToken) {
+    dispatch(addToken(localToken));
+  }
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+
     try {
       if (state === "Admin") {
         const response = await axios.post(`${backendUrl}/api/admin/login`, {
           email,
           password,
         });
+        // console.log("response", response.data.token)
         if (response.data.success) {
-          console.log(response.data.token);
           localStorage.setItem("token", response.data.token);
           dispatch(addToken(response.data.token));
         } else {

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const adminSlice = createSlice({
   name: "adminToken",
   initialState: null,
@@ -8,5 +9,5 @@ const adminSlice = createSlice({
   },
 });
 
-export const { addToken } = adminSlice.actions;
+export const { addToken, backendUrl } = adminSlice.actions;
 export default adminSlice.reducer;
