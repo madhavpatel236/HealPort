@@ -6,8 +6,9 @@ const adminSlice = createSlice({
   initialState: null,
   reducers: {
     addToken: (state, action) => action.payload,
+    removeToken: (state, action) => null,
   },
 });
 
-export const { addToken, backendUrl } = adminSlice.actions;
+export const { addToken, removeToken } = adminSlice.actions;
 export default adminSlice.reducer;
