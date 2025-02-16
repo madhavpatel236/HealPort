@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 import { addToken } from "../store/Slices/adminSlice";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
 function Login() {
+  const dispatch = useDispatch();
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState("admin@healportal.com");
   const [password, setPassword] = useState("Admin@236");
 
-  const dispatch = useDispatch();
+  
   const localToken = localStorage.getItem("token");
-
-  console.log(localToken);
+  // console.log(localToken)
   if (localToken) {
     dispatch(addToken(localToken));
   }
