@@ -6,6 +6,7 @@ const connectCloudinary = require("../config/cloudinary");
 const jwt = require("jsonwebtoken");
 
 const doctor = require("../models/doctorModel");
+const doctorModels = require("../models/doctorModel");
 
 // cloudinary.config({
 //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -144,4 +145,22 @@ const adminLogin = async (req, res) => {
   }
 };
 
-module.exports = { addDoctor, adminLogin };
+// API for get all the doctors list for admin panel
+const allDoctors = async (req, res) => {
+  try {
+    const doctors = await doctorModels.find({}).select('-password')
+    res.json({
+      success: true,
+      message: "All Doctors",
+      data: doctors,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { addDoctor, adminLogin, allDoctors };

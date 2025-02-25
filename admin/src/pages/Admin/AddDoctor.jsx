@@ -44,20 +44,28 @@ function AddDoctor() {
       );
       // formData.append("education", education);
 
-      // consol log formate data
       formData.forEach((value, key) => {
         console.log(`${key}: ${value}`);
       });
-      // console.log(formData);
 
-      const data = await axios.post(
+      const { data } = await axios.post(
         backendUrl + "/api/admin/add-doctor",
         formData,
         { headers: { atoken } }
       );
-
+      console.log(data);
       if (data.success) {
         toast.success(data.message);
+        setName('')
+        setEmail("");
+        setPassword("");
+        setExperience("1 Year");
+        setFees("");
+        setAbout("");
+        setAddress1('')
+        setAddress2("");
+        setDegree('')
+        setSpeciality(" General physician");
       } else {
         toast.error(data.message);
       }
